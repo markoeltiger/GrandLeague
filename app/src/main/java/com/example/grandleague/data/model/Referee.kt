@@ -7,11 +7,11 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class Referee(
     @Json(name = "id")
-    val id: Int,
+    var id: Int?,
     @Json(name = "name")
-    val name: String,
+    var name: String?,
     @Json(name = "nationality")
-    val nationality: String,
+    var nationality: String?,
     @Json(name = "role")
-    val role: String
+    var role: String?
 )

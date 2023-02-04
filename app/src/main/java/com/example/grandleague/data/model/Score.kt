@@ -7,15 +7,15 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class Score(
     @Json(name = "duration")
-    val duration: String,
+    var duration: String?,
     @Json(name = "extraTime")
-    val extraTime: ExtraTime,
+    var extraTime: ExtraTime?,
     @Json(name = "fullTime")
-    val fullTime: FullTime,
+    var fullTime: FullTime?,
     @Json(name = "halfTime")
-    val halfTime: HalfTime,
+    var halfTime: HalfTime?,
     @Json(name = "penalties")
-    val penalties: Penalties,
+    var penalties: Penalties?,
     @Json(name = "winner")
-    val winner: String
+    var winner: String?
 )

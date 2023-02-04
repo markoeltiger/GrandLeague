@@ -7,7 +7,7 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class FullTime(
     @Json(name = "awayTeam")
-    val awayTeam: Int,
+    var awayTeam: Int?,
     @Json(name = "homeTeam")
-    val homeTeam: Int
+    var homeTeam: Int?
 )

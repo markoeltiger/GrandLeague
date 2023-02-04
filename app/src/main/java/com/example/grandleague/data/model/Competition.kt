@@ -7,15 +7,15 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class Competition(
     @Json(name = "area")
-    val area: Area,
+    var area: Area?,
     @Json(name = "code")
-    val code: String,
+    var code: String?,
     @Json(name = "id")
-    val id: Int,
+    var id: Int?,
     @Json(name = "lastUpdated")
-    val lastUpdated: String,
+    var lastUpdated: String?,
     @Json(name = "name")
-    val name: String,
+    var name: String?,
     @Json(name = "plan")
-    val plan: String
+    var plan: String?
 )

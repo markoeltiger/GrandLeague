@@ -7,11 +7,11 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class Season(
     @Json(name = "currentMatchday")
-    val currentMatchday: Int,
+    var currentMatchday: Int?,
     @Json(name = "endDate")
-    val endDate: String,
+    var endDate: String?,
     @Json(name = "id")
-    val id: Int,
+    var id: Int?,
     @Json(name = "startDate")
-    val startDate: String
+    var startDate: String?
 )

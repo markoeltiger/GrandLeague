@@ -7,7 +7,7 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class HomeTeam(
     @Json(name = "id")
-    val id: Int,
+    var id: Int?,
     @Json(name = "name")
-    val name: String
+    var name: String?
 )

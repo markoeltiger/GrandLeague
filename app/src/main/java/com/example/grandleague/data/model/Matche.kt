@@ -7,29 +7,29 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class Matche(
     @Json(name = "awayTeam")
-    val awayTeam: AwayTeam,
+    var awayTeam: AwayTeam?,
     @Json(name = "group")
-    val group: Any,
+    var group: Any?,
     @Json(name = "homeTeam")
-    val homeTeam: HomeTeam,
+    var homeTeam: HomeTeam?,
     @Json(name = "id")
-    val id: Int,
+    var id: Int?,
     @Json(name = "lastUpdated")
-    val lastUpdated: String,
+    var lastUpdated: String?,
     @Json(name = "matchday")
-    val matchday: Int,
+    var matchday: Int?,
     @Json(name = "odds")
-    val odds: Odds,
+    var odds: Odds?,
     @Json(name = "referees")
-    val referees: List<Referee>,
+    var referees: List<Referee?>?,
     @Json(name = "score")
-    val score: Score,
+    var score: Score?,
     @Json(name = "season")
-    val season: Season,
+    var season: Season?,
     @Json(name = "stage")
-    val stage: String,
+    var stage: String?,
     @Json(name = "status")
-    val status: String,
+    var status: String?,
     @Json(name = "utcDate")
-    val utcDate: String
+    var utcDate: String?
 )

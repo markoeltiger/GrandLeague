@@ -7,11 +7,11 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class MatchesResponse(
     @Json(name = "competition")
-    val competition: Competition,
+    var competition: Competition?,
     @Json(name = "count")
-    val count: Int,
+    var count: Int?,
     @Json(name = "filters")
-    val filters: Filters,
+    var filters: Filters?,
     @Json(name = "matches")
-    val matches: List<Matche>
+    var matches: List<Matche?>?
 )
