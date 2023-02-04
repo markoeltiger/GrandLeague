@@ -10,6 +10,8 @@
     <color name="main_purble">#201943</color>
     <color name="main_red">#E70000</color>
     <color name="team_name_color">#F9E4E7</color>
+    <color name="grey">#808080</color>
+
 
 
 </resources>
