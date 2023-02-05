@@ -25,6 +25,7 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun getMatches() = viewModelScope.launch {
+        matchesRepo.getMatches()
         matchesRepo.getFromDao().let {
             _resp.postValue(it)
         }
