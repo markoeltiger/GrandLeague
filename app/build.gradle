@@ -38,6 +38,9 @@ android {
     buildFeatures {
         compose true
     }
+    kapt {
+        correctErrorTypes true
+    }
     composeOptions {
         kotlinCompilerExtensionVersion '1.1.1'
     }
@@ -103,6 +106,12 @@ dependencies {
     //coil
     implementation("io.coil-kt:coil-compose:2.2.2")
 
+    //Room DB
+    implementation "androidx.room:room-runtime:2.4.2"
+    implementation "androidx.room:room-ktx:2.4.2"
+    kapt "androidx.room:room-compiler:2.4.2"
+    //gson
+    implementation 'com.google.code.gson:gson:2.9.0'
 
 
 

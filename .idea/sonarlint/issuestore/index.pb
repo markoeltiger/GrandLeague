@@ -6,8 +6,6 @@ X
 .gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
 ?
 settings.gradle,0/5/05efc8b1657769a27696d478ded1e95f38737233
-A
-gradle.properties,2/a/2afbb999f001938c88fa43fc2ef52abf0f8213e4
 l
 <app/src/test/java/com/example/grandleague/ExampleUnitTest.kt,7/f/7f6ac3b386c5fb81b56c73d224d5b3cde0dcfaf8
 F
@@ -32,16 +30,6 @@ o
 ?app/src/main/java/com/example/grandleague/data/model/Filters.kt,7/7/7754d5805ce85889132ad7934554cca69e44a197
 j
 :app/src/main/java/com/example/grandleague/MyApplication.kt,8/a/8a9f4e461c0b62d65924ce8ec7005e40eed0dc26
-@
-app/build.gradle,f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164
-<
-build.gradle,f/0/f07866736216be0ee2aba49e392191aeae700a35
-P
- app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
-s
-Capp/src/main/java/com/example/grandleague/data/model/Competition.kt,a/8/a88d58c6575dfde1cd45a9033da6adab1def6f12
-p
-@app/src/main/java/com/example/grandleague/data/model/AwayTeam.kt,0/d/0d33f3d7c399500a38d810c2225236858867fe13
 l
 <app/src/main/java/com/example/grandleague/data/model/Area.kt,f/c/fcf1b128155f41c64331cd3d7f8fb61f87fedaa3
 l

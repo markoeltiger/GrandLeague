@@ -1,5 +1,6 @@
 package com.example.grandleague.ui.home
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -23,8 +24,9 @@ class HomeViewModel @Inject constructor(
      }
 
     private fun getMatches() =viewModelScope.launch{
-        matchesRepo.getMatches().let {
+        matchesRepo.getFromDao().let {
             _resp.postValue(it)
         }
-            }
+             }
+
 }
