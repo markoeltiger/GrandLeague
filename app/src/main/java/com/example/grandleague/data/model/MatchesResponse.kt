@@ -11,6 +11,7 @@ import com.example.grandleague.util.MatcheResponseTypeConverter
 import com.example.grandleague.util.SourceTypeConverter
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+
 @Entity(tableName = "matcheresponse")
 @TypeConverters(MatcheResponseTypeConverter::class)
 
@@ -18,7 +19,7 @@ import com.squareup.moshi.JsonClass
 data class MatchesResponse(
     @PrimaryKey
 
-    var id :Int  =0,
+    var id: Int = 0,
     @Json(name = "competition")
     @TypeConverters(CompetitionTypeConverter::class)
     var competition: Competition?,

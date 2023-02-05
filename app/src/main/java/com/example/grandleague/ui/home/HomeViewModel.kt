@@ -15,18 +15,19 @@ import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(
     private val matchesRepo: MatchesRepo
-):ViewModel(){
-    private val _resp= MutableLiveData<MatchesResponse>()
+) : ViewModel() {
+    private val _resp = MutableLiveData<MatchesResponse>()
     val matchesresp: LiveData<MatchesResponse>
-        get()= _resp
+        get() = _resp
+
     init {
         getMatches()
-     }
+    }
 
-    private fun getMatches() =viewModelScope.launch{
+    private fun getMatches() = viewModelScope.launch {
         matchesRepo.getFromDao().let {
             _resp.postValue(it)
         }
-             }
+    }
 
 }

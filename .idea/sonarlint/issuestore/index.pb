@@ -28,8 +28,6 @@ k
 ;app/src/main/java/com/example/grandleague/ui/theme/Color.kt,2/2/22c570c9fcac14b25d0572b6acd9888942d7ab1d
 o
 ?app/src/main/java/com/example/grandleague/data/model/Filters.kt,7/7/7754d5805ce85889132ad7934554cca69e44a197
-j
-:app/src/main/java/com/example/grandleague/MyApplication.kt,8/a/8a9f4e461c0b62d65924ce8ec7005e40eed0dc26
 l
 <app/src/main/java/com/example/grandleague/data/model/Area.kt,f/c/fcf1b128155f41c64331cd3d7f8fb61f87fedaa3
 l

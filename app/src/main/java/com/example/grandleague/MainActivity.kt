@@ -51,13 +51,13 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             GrandLeagueTheme {
-                 Surface(
+                Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = colorResource(id = R.color.main_purble),
 
-                ) {
-                     LeagueLogo()
-                     MatchesList()
+                    ) {
+                    LeagueLogo()
+                    MatchesList()
                 }
             }
         }
@@ -66,37 +66,44 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun LeagueLogo() {
-Row() {
+    Row() {
 
-    Image(
-        painter = painterResource(id = R.drawable.leaguelogo),
-        contentDescription = stringResource(id = R.string.english_League_Logo)
-    )
+        Image(
+            painter = painterResource(id = R.drawable.leaguelogo),
+            contentDescription = stringResource(id = R.string.english_League_Logo)
+        )
 
 
+    }
+}
 
- }
- }
 @Composable
-fun MatchesList( homeViewModel: HomeViewModel = viewModel()){
+fun MatchesList(homeViewModel: HomeViewModel = viewModel()) {
     val matchesList by homeViewModel.matchesresp.observeAsState()
 
     Column {
-        LazyColumn(modifier = Modifier.padding(top = 70.dp).padding(horizontal = 20.dp)){
-            if (matchesList?.equals(null) == true){
-                item {  CircularProgressIndicator(modifier = Modifier
-                    .fillMaxSize()
-                    .wrapContentSize(align = Alignment.Center))
+        LazyColumn(modifier = Modifier
+            .padding(top = 70.dp)
+            .padding(horizontal = 20.dp)) {
+            if (matchesList?.equals(null) == true) {
+                item {
+                    CircularProgressIndicator(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .wrapContentSize(align = Alignment.Center)
+                    )
 
                 }
 
-            }
-            else{
-                val matchList= matchesList?.matches
-                if (matchList!=null){
-                    itemsIndexed(items = matchList){index, item ->
+            } else {
+                val matchList = matchesList?.matches
+                if (matchList != null) {
+                    itemsIndexed(items = matchList) { index, item ->
                         if (item != null) {
-                            MatchItem(match = item, league = matchesList!!.competition!!.name.toString())
+                            MatchItem(
+                                match = item,
+                                league = matchesList!!.competition!!.name.toString()
+                            )
                         }
 
                     }
@@ -107,97 +114,169 @@ fun MatchesList( homeViewModel: HomeViewModel = viewModel()){
 
     }
 }
+
 @Composable
 fun MatchItem(
-    match:Matche,
-league:String
+    match: Matche,
+    league: String
 ) {
 
 
-
-        Box(
-            modifier = Modifier
-                .clip(shape = RoundedCornerShape(size = 20.dp))
-                .padding(top = 50.dp)
-                .background(  brush = Brush.verticalGradient(
+    Box(
+        modifier = Modifier
+            .clip(shape = RoundedCornerShape(size = 20.dp))
+            .padding(top = 50.dp)
+            .background(
+                brush = Brush.verticalGradient(
                     colors = listOf(
                         colorResource(id = R.color.white).copy(0.1f),
                         colorResource(id = R.color.grey).copy(0.1f)
-                    )))
-                .height(170.dp)
-                .fillMaxSize()
-                 .clip(shape = RoundedCornerShape(4.dp,4.dp,4.dp,4.dp))
-            ,    contentAlignment = Alignment.Center ) {
+                    )
+                )
+            )
+            .height(170.dp)
+            .fillMaxSize()
+            .clip(shape = RoundedCornerShape(4.dp, 4.dp, 4.dp, 4.dp)),
+        contentAlignment = Alignment.Center
+    ) {
 
-            Row(
-verticalAlignment =Alignment.Top,
-                horizontalArrangement = Arrangement.Start
-            , modifier = Modifier.padding(bottom = 50.dp).align(TopCenter)
+        Row(
+            verticalAlignment = Alignment.Top,
+            horizontalArrangement = Arrangement.Start,
+            modifier = Modifier
+                .padding(bottom = 50.dp)
+                .align(TopCenter)
+        ) {
+
+            Box(
+
+                modifier = Modifier
+                    .clip(shape = RoundedCornerShape(0, 0, 50, 50))
+                    .background(colorResource(id = R.color.main_red).copy(0.8f))
+                    .height(30.dp)
+
+                    .width(120.dp)
+                    .align(alignment = Alignment.Top)
+
             ) {
+                Text(
+                    text = "${match.status.toString()}", modifier = Modifier
+                        .fillMaxSize()
+                        .align(
+                            Center
+                        ), textAlign = TextAlign.Center, color = Color.White
+                )
+            }
 
-                Box(
-
-                    modifier = Modifier
-                        .clip(shape = RoundedCornerShape(0, 0, 50, 50))
-                        .background(colorResource(id = R.color.main_red).copy(0.8f))
-                        .height(30.dp)
-
-                        .width(120.dp)
-                        .align(alignment = Alignment.Top)
-
+        }
+        Row(
+            modifier = Modifier.padding(bottom = 20.dp)
+        ) {
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .weight(1f)
+                    .align(CenterVertically)) {
+                Text(
+                    text = "${match.homeTeam?.name}",
+                    color = colorResource(id = R.color.team_name_color),
+                    fontSize = 20.sp,
+                    modifier = Modifier.padding(5.dp),
+                    textAlign = TextAlign.Center,
+                    maxLines = 4,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .weight(1f)) {
+                Row(
+                    horizontalArrangement = Arrangement.Center
                 ) {
-                    Text(text = "${match.status.toString()}", modifier = Modifier.fillMaxSize().align(
-                        Center), textAlign = TextAlign.Center, color = Color.White)
-                }
-
-            }
-            Row(
-                modifier = Modifier.padding(bottom = 20.dp)
-            ) {
-                Column(  Modifier.fillMaxWidth().weight(1f).align(CenterVertically) ) {
-                    Text(text = "${match.homeTeam?.name}" , color = colorResource(id = R.color.team_name_color),fontSize = 20.sp, modifier = Modifier.padding(15.dp), textAlign = TextAlign.Center, maxLines = 4   , fontWeight = FontWeight.Bold
+                    Text(
+                        text = "${match.utcDate?.split("T")?.get(0)}",
+                        color = Color.White,
+                        textAlign = TextAlign.Center,
+                        fontSize = 10.sp,
+                        modifier = Modifier.fillMaxWidth()
                     )
+
                 }
-                Column(Modifier.fillMaxWidth().weight(1f)) {
-                    Row(
-                        horizontalArrangement = Arrangement.Center) {
-                        Text(text = "${match.utcDate?.split("T")?.get(0)}", color = Color.White, textAlign = TextAlign.Center, fontSize = 10.sp,modifier = Modifier.fillMaxWidth()
-                            )
-
-                    }
-                    Row(
-                        horizontalArrangement = Arrangement.Center) {
-                        Text(text = "${match.score?.fullTime?.homeTeam} - ${match.score?.fullTime?.awayTeam}", color = Color.White,fontSize = 25.sp, modifier = Modifier.padding(10.dp).fillMaxWidth(), textAlign = TextAlign.Center,    fontWeight = FontWeight.Bold
-                        )
-
-                    }
-                }
-
-                Column(Modifier.fillMaxWidth().weight(1f).align(CenterVertically)) {
-                    Text(text = "${match.awayTeam?.name}", color = colorResource(id = R.color.team_name_color), fontSize = 20.sp, modifier = Modifier.padding(10.dp), textAlign = TextAlign.Center,maxLines = 4,    fontWeight = FontWeight.Bold
+                Row(
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    Text(
+                        text = "${match.score?.fullTime?.homeTeam} - ${match.score?.fullTime?.awayTeam}",
+                        color = Color.White,
+                        fontSize = 25.sp,
+                        modifier = Modifier
+                            .padding(5.dp)
+                            .fillMaxWidth(),
+                        textAlign = TextAlign.Center,
+                        fontWeight = FontWeight.Bold
                     )
 
                 }
             }
-//
-            Row(modifier = Modifier.align(BottomCenter).padding(bottom = 30.dp).width(300.dp).alpha(0.2f)) {
-                Divider(color = Color.White, thickness = 1.dp,)
 
-            }
-            Row(modifier = Modifier.align(BottomCenter).padding(bottom = 25.dp)) {
-                Text(text = " Starts At ${match.utcDate?.split("T")?.get(1)}", color = colorResource(id = R.color.white), fontSize = 15.sp, modifier = Modifier.padding(10.dp), textAlign = TextAlign.Center,maxLines = 4)
-
-            }
-
-            Row(modifier = Modifier.align(BottomCenter).padding(top = 20.dp)) {
-                Text(text = "${league}", color = colorResource(id = R.color.white), fontSize = 15.sp, modifier = Modifier.padding(10.dp), textAlign = TextAlign.Center,maxLines = 4)
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .weight(1f)
+                    .align(CenterVertically)) {
+                Text(
+                    text = "${match.awayTeam?.name}",
+                    color = colorResource(id = R.color.team_name_color),
+                    fontSize = 20.sp,
+                    modifier = Modifier.padding(5.dp),
+                    textAlign = TextAlign.Center,
+                    maxLines = 4,
+                    fontWeight = FontWeight.Bold
+                )
 
             }
         }
+//
+        Row(
+            modifier = Modifier
+                .align(BottomCenter)
+                .padding(bottom = 30.dp)
+                .width(300.dp)
+                .alpha(0.2f)
+        ) {
+            Divider(color = Color.White, thickness = 1.dp)
+
+        }
+        Row(modifier = Modifier
+            .align(BottomCenter)
+            .padding(bottom = 25.dp)) {
+            Text(
+                text = " Starts At ${match.utcDate?.split("T")?.get(1)}",
+                color = colorResource(id = R.color.white),
+                fontSize = 15.sp,
+                modifier = Modifier.padding(10.dp),
+                textAlign = TextAlign.Center,
+                maxLines = 4
+            )
+
+        }
+
+        Row(modifier = Modifier
+            .align(BottomCenter)
+            .padding(top = 20.dp)) {
+            Text(
+                text = "${league}",
+                color = colorResource(id = R.color.white),
+                fontSize = 15.sp,
+                modifier = Modifier.padding(10.dp),
+                textAlign = TextAlign.Center,
+                maxLines = 4
+            )
+
+        }
     }
-
-
-
+}
 
 
 @Preview(showBackground = true)
@@ -206,5 +285,5 @@ fun DefaultPreview() {
     GrandLeagueTheme {
         LeagueLogo()
         MatchesList()
-     }
+    }
 }
