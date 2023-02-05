@@ -76,7 +76,7 @@ A GrandLeague application build with\
 
 ### Installation
 
-1. Get a free API Key at [https://www.weatherapi.com/](https://www.weatherapi.com/)
+1. Get a free API Key at [https://www.football-data.org/](https://www.football-data.org/)
 
 2. Clone the repo
 
