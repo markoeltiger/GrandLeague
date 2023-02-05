@@ -1,24 +1,19 @@
 package com.example.grandleague
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.SnackbarDefaults.backgroundColor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.BottomCenter
-import androidx.compose.ui.Alignment.Companion.BottomEnd
 import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Alignment.Companion.CenterVertically
@@ -26,24 +21,24 @@ import androidx.compose.ui.Alignment.Companion.TopCenter
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.Role.Companion.Image
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import coil.Coil
 import com.example.grandleague.data.model.Matche
 import com.example.grandleague.ui.home.HomeViewModel
 import com.example.grandleague.ui.theme.GrandLeagueTheme
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.*
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -70,7 +65,7 @@ fun LeagueLogo() {
 
         Image(
             painter = painterResource(id = R.drawable.leaguelogo),
-            contentDescription = stringResource(id = R.string.english_League_Logo)
+            contentDescription = stringResource(id = R.string.english_League_Logo), modifier = Modifier.padding(15.dp)
         )
 
 
@@ -112,16 +107,22 @@ fun MatchesList(homeViewModel: HomeViewModel = viewModel()) {
 
                     sortedMatchList.forEach() {
                         stickyHeader {
+                             val format1 = SimpleDateFormat("yyyy-MM-dd")
+                            val dt1: Date = format1.parse(it.key)
+                            val format2: DateFormat = SimpleDateFormat("EEEE")
+                            val finalDay: String = format2.format(dt1)
+
                             Text(
-                                text = "${it.key}",
+                                text = "${finalDay} ${it.key}",
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .align(CenterHorizontally)
                                     .background(
                                         colorResource(id = R.color.main_purble)
-                                    ),
+                                    )
+                                    .padding(top = 15.dp),
                                 color = Color.White,
-                                fontSize = 20.sp
+                                fontSize = 17.sp
                             )
                         }
                         itemsIndexed(items = it.value) { index, item ->
@@ -153,7 +154,7 @@ fun MatchItem(
     Box(
         modifier = Modifier
             .clip(shape = RoundedCornerShape(size = 20.dp))
-            .padding(top = 50.dp)
+            .padding(top = 20.dp)
             .background(
                 brush = Brush.verticalGradient(
                     colors = listOf(
