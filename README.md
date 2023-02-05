@@ -57,10 +57,11 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 ## Built With
 
 A GrandLeague application build with\
-* [Compose UI](Compose UI )
+* [Compose UI](Compose UI)
 * [coroutine](coroutine)
 * [retrofit](retrofit)
 * [MVVM](MVVM)
+* [DaggerHilt](DaggerHilt)
 * [LiveData](LiveData)
 * [Room](Room)
 
