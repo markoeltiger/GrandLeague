@@ -175,7 +175,7 @@ fun MatchItem(
                 .padding(bottom = 50.dp)
                 .align(TopCenter)
         ) {
-
+if (match.status.toString()=="FINISHED"){
             Box(
 
                 modifier = Modifier
@@ -194,6 +194,26 @@ fun MatchItem(
                             Center
                         ), textAlign = TextAlign.Center, color = Color.White
                 )
+            }}else{
+    Box(
+
+        modifier = Modifier
+            .clip(shape = RoundedCornerShape(0, 0, 50, 50))
+            .background(colorResource(id = android.R.color.holo_red_light).copy(0.8f))
+            .height(30.dp)
+
+            .width(120.dp)
+            .align(alignment = Alignment.Top)
+
+    ) {
+        Text(
+            text = "${match.status.toString()}", modifier = Modifier
+                .fillMaxSize()
+                .align(
+                    Center
+                ), textAlign = TextAlign.Center, color = Color.White
+        )
+    }
             }
 
         }
@@ -236,6 +256,19 @@ fun MatchItem(
                 Row(
                     horizontalArrangement = Arrangement.Center
                 ) {
+                    if (match.status=="SCHEDULED"){
+                        Text(
+                            text = "  -  ",
+                            color = Color.White,
+                            fontSize = 25.sp,
+                            modifier = Modifier
+                                .padding(5.dp)
+                                .fillMaxWidth(),
+                            textAlign = TextAlign.Center,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                    else{
                     Text(
                         text = "${match.score?.fullTime?.homeTeam} - ${match.score?.fullTime?.awayTeam}",
                         color = Color.White,
@@ -247,7 +280,7 @@ fun MatchItem(
                         fontWeight = FontWeight.Bold
                     )
 
-                }
+                }}
             }
 
             Column(
